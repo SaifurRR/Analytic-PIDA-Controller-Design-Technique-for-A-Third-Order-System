@@ -1,0 +1,42 @@
+%Part 2
+clc;
+clear all;
+close all;
+%1
+G = tf([0 0 0 168.0436],[1 25.921 168.0436 0]);
+figure(1)
+pzmap(G, 'r');
+grid on
+%2
+figure(2)
+step(G)
+grid on
+
+figure (3)
+impulse(G)
+grid on
+
+figure(4)
+
+figure(5)
+bode(G)
+grid on
+% 3
+b=[0 0 0 168.0436]; a= [1 25.921 168.0436 0];
+[z,p,k] = tf2zp(b,a)
+
+%4
+BIBO_stability =  isstable(G)
+
+Part 3_ques 2
+G_z= c2d(G, 1.18,'zoh')
+ d=[0 1.026 0.1543 2.312*10^(-7)];
+ c=[1 -1 4.345*10^(-7)  -5.204*10^(-14)];
+ [z,p,k] = tf2zp(d,c)
+
+Part 3 ques 6
+G_z= c2d(G, 1,'zoh')
+ d=[0 0.8458 0.1542 1.972*10^(-6)];
+ c=[1 -1 4.541*10^(-6)  -5.529*10^(-12)];
+ [z,p,k] = tf2zp(d,c)
+
